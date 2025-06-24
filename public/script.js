@@ -1,4 +1,5 @@
-const API = "http://localhost:3000";
+const API = window.location.origin;
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const menu = document.getElementById("menu");
