@@ -7,7 +7,8 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(cors());
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/data', express.static(path.join(__dirname, '../data')));
-
+app get
 
 // Ensure folders exist
 ['../uploads/items', '../uploads/slideshow', '../data'].forEach(folder => {
