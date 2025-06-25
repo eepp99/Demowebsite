@@ -56,7 +56,7 @@ function startSlideshow() {
 let allItems = [];
 
 function loadItems() {
-  fetch(`${API}/api/items`)
+  fetch("/api/items")
     .then(res => res.json())
     .then(data => {
       allItems = data;
