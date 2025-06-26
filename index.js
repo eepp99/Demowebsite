@@ -63,11 +63,11 @@ const saveJSON = (filePath, data) => {
 };
 
 // Paths
-const ITEMS_PATH = path.join(__dirname, '../data/items.json');
-const SLIDESHOW_PATH = path.join(__dirname, '../data/slideshow.json');
-const ORDERS_PATH = path.join(__dirname, '../data/orders.json');
-const BUYERS_PATH = path.join(__dirname, '../data/buyers.json');
-const STOCK_LOG_PATH = path.join(__dirname, '../data/out-of-stock.log');
+const ITEMS_PATH = path.join(DATA_DIR, 'items.json');
+const SLIDESHOW_PATH = path.join(DATA_DIR, 'slideshow.json');
+const BUYERS_PATH = path.join(DATA_DIR, 'buyers.json');
+const ORDERS_PATH = path.join(DATA_DIR, 'orders.json');
+const STOCK_LOG_PATH = path.join(DATA_DIR, 'out-of-stock.log');
 // Routes
 
 // Upload item
