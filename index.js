@@ -21,27 +21,26 @@ app.get('/', (req, res) => {
 
 
 // Static file paths
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 // Ensure folders exist
-['../uploads/items', '../uploads/slideshow', '../data'].forEach(folder => {
+['public/items', 'uploads/slideshow', 'data'].forEach(folder => {
   const dir = path.join(__dirname, folder);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
 // Multer setup
 const itemStorage = multer.diskStorage({
-  destination: (_, __, cb) => cb(null, path.join(__dirname, '../uploads/items')),
+  destination: (_, __, cb) => cb(null, path.join(__dirname, 'public/items')),  // ✅ moved to public
   filename: (_, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
+
 const slideshowStorage = multer.diskStorage({
-  destination: (_, __, cb) => cb(null, path.join(__dirname, '../uploads/slideshow')),
+  destination: (_, __, cb) => cb(null, path.join(__dirname, 'uploads/slideshow')),
   filename: (_, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
+
 const uploadItem = multer({ storage: itemStorage });
 const uploadSlideshow = multer({ storage: slideshowStorage });
 
