@@ -474,7 +474,7 @@ function exportBuyersToCSV() {
 
 // ---------------- INQUIRY + SUPPORT ----------------
 function loadInquiries() {
-  fetch(`${API}/data/inquiries.json`)
+  fetch(`/data/inquiries.json`)
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("adminInquiries");
@@ -501,7 +501,7 @@ function deleteInquiry(index) {
 }
 
 function loadSupportTickets() {
-  fetch(`${API}/data/support.json`)
+  fetch(`/data/support.json`)
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("adminSupport");
