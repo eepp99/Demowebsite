@@ -81,6 +81,8 @@ const SLIDESHOW_PATH = path.join(DATA_DIR, 'slideshow.json');
 const BUYERS_PATH = path.join(DATA_DIR, 'buyers.json');
 const ORDERS_PATH = path.join(DATA_DIR, 'orders.json');
 const STOCK_LOG_PATH = path.join(DATA_DIR, 'out-of-stock.log');
+const INQUIRIES_PATH = path.join(DATA_DIR, 'inquiries.json');
+const SUPPORT_PATH = path.join(DATA_DIR, 'support.json');
 // Routes
 
 // Upload item
