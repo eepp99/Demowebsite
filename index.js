@@ -73,7 +73,7 @@ const STOCK_LOG_PATH = path.join(__dirname, '../data/out-of-stock.log');
 // Upload item
 app.post('/api/upload-item', uploadItem.array('photos'), (req, res) => {
   const { name, model, quality, description, price, crypto1, crypto2, coinType, stock } = req.body; // ✅ added stock
-  const photos = req.files.map(file => '/uploads/items/' + file.filename);
+  const photos = req.files.map(file => '/items/' + file.filename);
   const items = loadJSON(ITEMS_PATH);
 
   const newItem = {
