@@ -23,6 +23,8 @@ app.get('/', (req, res) => {
 // Static file paths
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Ensure folders exist
 ['public/items', 'uploads/slideshow', 'data'].forEach(folder => {
@@ -64,6 +66,12 @@ const saveJSON = (filePath, data) => {
 // Create /data directory if missing
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
+
+// Ensure all required JSON files exist
+['items.json', 'slideshow.json', 'buyers.json', 'orders.json', 'inquiries.json', 'support.json'].forEach(file => {
+  const filePath = path.join(DATA_DIR, file);
+  if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, '[]');
+});
 
 // Paths
 const ITEMS_PATH = path.join(DATA_DIR, 'items.json');
