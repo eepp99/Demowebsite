@@ -24,6 +24,8 @@ app.get('/', (req, res) => {
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/items', express.static(path.join(__dirname, 'public/items')));
+
 
 
 // Ensure folders exist
