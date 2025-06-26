@@ -61,6 +61,9 @@ const saveJSON = (filePath, data) => {
     console.error('Failed to save JSON:', filePath, err);
   }
 };
+// Create /data directory if missing
+const DATA_DIR = path.join(__dirname, 'data');
+if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
 
 // Paths
 const ITEMS_PATH = path.join(DATA_DIR, 'items.json');
