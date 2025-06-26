@@ -69,7 +69,7 @@ function renderItems(items) {
   if (!container) return;
   container.innerHTML = items.map(item => `
     <div class="item-box ${item.stock === 0 ? 'out-of-stock' : ''}">
-      <img src="${item.photos[0] || ''}" class="item-img" />
+      <img src="${API}${item.photos[0] || ''}" class="item-img" />
       <h2>${item.name}</h2>
       <p>Model: ${item.model}</p>
       <p>Price: ${item.price} ${item.coinType}</p>
