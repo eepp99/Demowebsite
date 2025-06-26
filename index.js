@@ -254,8 +254,6 @@ app.delete('/api/clear-buyers', (req, res) => {
 
 
 
-const INQUIRIES_PATH = path.join(__dirname, '../data/inquiries.json');
-const SUPPORT_PATH = path.join(__dirname, '../data/support.json');
 
 // Receive inquiry form
 app.post('/api/inquiry', (req, res) => {
