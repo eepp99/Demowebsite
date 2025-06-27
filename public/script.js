@@ -437,7 +437,7 @@ function loadBuyers() {
 function deleteBuyer(index) {
   if (!confirm("Are you sure you want to delete this buyer?")) return;
 
-  fetch(`${API}/api/delete-buyer/${index}`, {
+  fetch(`${API}/api/delete-buyer`, {
     method: "DELETE"
   }).then(() => loadBuyers());
 }
