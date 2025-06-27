@@ -229,10 +229,9 @@ app.post('/api/update-stock', (req, res) => {
 });
 
 
-
 app.delete('/api/delete-buyer/:index', (req, res) => {
   const index = parseInt(req.params.index);
-  const buyersPath = path.join(__dirname, '../data/buyers.json');
+  const buyersPath = path.join(__dirname, 'data/buyers.json'); // ✅ fixed
   let buyers = loadJSON(buyersPath);
 
   if (isNaN(index) || index < 0 || index >= buyers.length) {
@@ -247,8 +246,8 @@ app.delete('/api/delete-buyer/:index', (req, res) => {
 
 
 app.delete('/api/clear-buyers', (req, res) => {
-  const buyersPath = path.join(__dirname, '../data/buyers.json');
-  saveJSON(buyersPath, []); // Clear the file
+  const buyersPath = path.join(__dirname, 'data/buyers.json'); // ✅ fixed
+  saveJSON(buyersPath, []);
   res.status(200).json({ message: 'All buyers cleared.' });
 });
 
