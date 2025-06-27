@@ -27,6 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 });
 
+// Attach search event listener
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const term = searchInput.value.toLowerCase();
+      const filteredItems = allItems.filter(item =>
+        item.name.toLowerCase().includes(term) ||
+        item.model.toLowerCase().includes(term) ||
+        item.description?.toLowerCase().includes(term)
+      );
+      renderItems(filteredItems);
+    });
+  }
+});
+
+
+
+
 // ---------------- SLIDESHOW ----------------
 function loadSlideshow() {
   fetch(`${API}/api/slideshow`)
