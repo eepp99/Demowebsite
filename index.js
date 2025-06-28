@@ -82,7 +82,7 @@ const BUYERS_PATH = path.join(DATA_DIR, 'buyers.json');
 const ORDERS_PATH = path.join(DATA_DIR, 'orders.json');
 const STOCK_LOG_PATH = path.join(DATA_DIR, 'out-of-stock.log');
 const INQUIRIES_PATH = path.join(DATA_DIR, 'inquiries.json');
-const SUPPORT_PATH = path.join(DATA_DIR, 'support.json');
+
 // Routes
 
 // Upload item
@@ -263,14 +263,7 @@ app.post('/api/inquiry', (req, res) => {
   res.status(200).json({ success: true });
 });
 
-// Receive support ticket
-app.post('/api/support', (req, res) => {
-  const ticket = req.body;
-  const list = loadJSON(SUPPORT_PATH);
-  list.push({ ...ticket, timestamp: new Date().toISOString() });
-  saveJSON(SUPPORT_PATH, list);
-  res.status(200).json({ success: true });
-});
+
 app.delete('/api/delete-inquiry/:index', (req, res) => {
   const index = parseInt(req.params.index);
   const list = loadJSON(INQUIRIES_PATH);
@@ -281,15 +274,6 @@ app.delete('/api/delete-inquiry/:index', (req, res) => {
   res.status(200).json({ message: 'Inquiry deleted' });
 });
 
-app.delete('/api/delete-support/:index', (req, res) => {
-  const index = parseInt(req.params.index);
-  const list = loadJSON(SUPPORT_PATH);
-  if (index < 0 || index >= list.length) return res.status(400).json({ error: 'Invalid index' });
-
-  list.splice(index, 1);
-  saveJSON(SUPPORT_PATH, list);
-  res.status(200).json({ message: 'Support ticket deleted' });
-});
 
 
 // Start server
