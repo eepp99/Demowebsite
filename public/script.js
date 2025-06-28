@@ -20,9 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("cartPageItems")) loadCart();
   if (document.getElementById("adminBuyers")) loadBuyers?.();
   if (document.getElementById("adminInquiries")) loadInquiries();
- 
-
-
   setupMiniCart();
   updateCartCount();
 });
@@ -522,7 +519,7 @@ function deleteInquiry(index) {
 
 
 
-}
+
 
 // Auto-load if sections are present
 if (document.getElementById("adminInquiries")) loadInquiries();
