@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("cartPageItems")) loadCart();
   if (document.getElementById("adminBuyers")) loadBuyers?.();
   if (document.getElementById("adminInquiries")) loadInquiries();
-  if (document.getElementById("adminSupport")) loadSupportTickets();
+ 
 
 
   setupMiniCart();
@@ -519,33 +519,11 @@ function deleteInquiry(index) {
     .then(() => loadInquiries());
 }
 
-function loadSupportTickets() {
-  fetch(`/data/support.json`)
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById("adminSupport");
-      if (!container) return;
-      container.innerHTML = data.length
-        ? data.map((i, index) => `
-          <div class="admin-entry">
-            <p><strong>Name:</strong> ${i.name}</p>
-            <p><strong>Email:</strong> ${i.email}</p>
-            <p><strong>Order No:</strong> ${i.order || 'N/A'}</p>
-            <p><strong>Issue:</strong> ${i.issue || i.text}</p>
-            <small>${i.timestamp}</small>
-            <button onclick="deleteSupport(${index})">Delete</button>
-          </div>
-        `).join("")
-        : "<p>No support tickets yet.</p>";
-    });
-}
 
-function deleteSupport(index) {
-  if (!confirm("Delete this support ticket?")) return;
-  fetch(`${API}/api/delete-support/${index}`, { method: "DELETE" })
-    .then(() => loadSupportTickets());
+
+
 }
 
 // Auto-load if sections are present
 if (document.getElementById("adminInquiries")) loadInquiries();
-if (document.getElementById("adminSupport")) loadSupportTickets();
+
